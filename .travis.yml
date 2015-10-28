@@ -18,6 +18,7 @@ addons:
     packages:
       - python2.4
 install:
+  - python -c 'import setuptools ; print(setuptools.__version__)'
   - pip uninstall setuptools -y
   - pip install setuptools==18.3
   - pip install tox PyYAML Jinja2 sphinx
