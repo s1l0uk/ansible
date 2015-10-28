@@ -19,7 +19,7 @@ addons:
       - python2.4
 install:
   - pip uninstall setuptools -y
-  - pip install setuptools
+  - pip install -U setuptools
   - pip install tox PyYAML Jinja2 sphinx
 script:
 # urllib2's defaults are not secure enough for us
@@ -29,6 +29,7 @@ script:
 - if test x"$TOXENV" != x'py24' ; then tox ; fi
 - if test x"$TOXENV" = x'py24' ; then python2.4 -V && python2.4 -m compileall -fq -x 'module_utils/(a10|rax|openstack|ec2|gce).py' lib/ansible/module_utils ; fi
   #- make -C docsite all
+- python -c 'import setuptools ; print(setuptools.__version__)'
 - if test x"$INTEGRATION" = x'yes' ; then source ./hacking/env-setup && cd test/integration/ && make parsing && make test_var_precedence && make unicode ; fi
 after_success:
   - coveralls
