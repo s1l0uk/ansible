@@ -19,7 +19,7 @@ addons:
       - python2.4
 install:
   - pip uninstall setuptools -y
-  - pip install -U setuptools
+  - pip install setuptools==18.3
   - pip install tox PyYAML Jinja2 sphinx
 script:
 # urllib2's defaults are not secure enough for us
